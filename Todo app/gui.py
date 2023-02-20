@@ -1,7 +1,11 @@
 import functions
 import PySimpleGUI as sg
+import time
+
+
 
 # initalize all the gui element
+clock = sg.Text('', key='clock')
 label = sg.Text("Type in a to-do")
 input_box = sg.InputText(tooltip = "Enter todo",key= "todo")
 add_button = sg.Button("Add")
@@ -14,12 +18,14 @@ list_box = sg.Listbox(values = functions.get_todos(),
                       size = [45,10])
 
 # initiliaze the view of the window
-window = sg.Window('My To-Do App',layout = [[label],
-                                            [input_box,add_button],
-                                            [list_box ,edit_button, delete_button],
+window = sg.Window('My To-Do App',layout = [[clock],
+                                            [label],
+                                            [input_box, add_button],
+                                            [list_box,edit_button, delete_button],
                                             [exit_button]])
 while True:
-    event, value = window.read()
+    event, value = window.read(timeout = 10)
+    window['clock'].update(value = time.strftime("%b %d, %Y %H:%M:%S"))
     match event:
         case 'Add':
             new_todo = value['todo']
@@ -28,16 +34,21 @@ while True:
             window['todo'].update(value = '') #update the input_box
             #print(functions.get_todos())
         case 'Edit':
-        
-            if value['todo'] != '':
-                todos = functions.edit_todo(sel_todo = value['sel_todo'][0],
-                               new_todo = value['todo'])
-                window['sel_todo'].update(values = todos) #refreshes the list view with new value
+            try:
+                if value['todo'] != '':
+                    todos = functions.edit_todo(sel_todo = value['sel_todo'][0],
+                                    new_todo = value['todo'])
+                    window['sel_todo'].update(values = todos) #refreshes the list view with new value
+            except IndexError:
+                sg.popup("Please select a item first.", font = ('Helvetica', 20))
+                
         case 'Delete':
-            todos = functions.delete_todo(value['todo'])
-            window['sel_todo'].update(values = todos)
-            window['todo'].update(value = '')
-            
+            try:
+                todos = functions.delete_todo(value['todo'])
+                window['sel_todo'].update(values = todos)
+                window['todo'].update(value = '')
+            except IndexError:
+                sg.popup("Please select a item first.", font = ('Helvetica', 20))
         case 'sel_todo':
             window['todo'].update(value = value['sel_todo'][0]) # update input box on selection of a todo
         case 'Exit':
