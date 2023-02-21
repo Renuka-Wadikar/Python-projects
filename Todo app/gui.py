@@ -1,8 +1,12 @@
 import functions
 import PySimpleGUI as sg
 import time
+import os
 
-
+#error handling if file not present
+if not os.path.exists(r"database.txt"):
+    with open(r"database.txt",'w') as file:
+        pass
 
 # initalize all the gui element
 clock = sg.Text('', key='clock')

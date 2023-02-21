@@ -2,7 +2,7 @@
     
 """
 
-FILEPATH = r"D:\Python projects\Todo app\files\database.txt"
+FILEPATH = r"database.txt"
 
 # get_todos() :- return the lines(todos ) store in database file
 def get_todos(filepath=FILEPATH):
