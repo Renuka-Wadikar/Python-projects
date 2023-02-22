@@ -1,0 +1,15 @@
+import streamlit as st
+
+st.set_page_config(layout='wide')
+col1, col2 = st.columns(2)
+
+with col1:
+    st.image('images/photo.jpg')
+
+with col2:
+    st.title("Renuka Wadikar")
+    content = """Hi, I am Renuka! I am a aspiring python programmer and python enthusiast.
+    I graduated in 2020 with BE in Computer Science.I love to learn things  by expermeting with the code.
+    This website is showcase of various aaplication buil by me , while learning the language.
+    Hope you enjoy the website!!!"""
+    st.info(content)
