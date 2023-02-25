@@ -4,7 +4,7 @@ import os
 
 
 def sent_email(user_email,message):
-    username  = 'wadikarrenuka@gmail.com'
+    username  = 'renukawadikar27@gmail.com'
     msg = EmailMessage()
     msg.set_content(message)
     msg['Subject'] = 'A new email from ' + user_email
