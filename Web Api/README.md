@@ -23,4 +23,5 @@ Example for stations on given year: http://127.0.0.1:5000/api/v1/year/10/1988
 
 ## Project Image
 
+![Screenshot (5)](https://user-images.githubusercontent.com/84169629/230831737-1552c51d-b04e-4341-8c99-43d927b0e11a.png)
 ![Screenshot (6)](https://user-images.githubusercontent.com/84169629/230831361-ad50bfe3-9479-4b41-805c-a8cf15feccf4.png)
