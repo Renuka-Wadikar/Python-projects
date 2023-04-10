@@ -7,8 +7,8 @@ def send_email(message):
     port = 465
     message = "Subject: Today's news \n" + message
     username = "renukawadikar27@gmail.com"
-    password = 'rgkhpzjljmmjdpjq' # genrate the app password from gmail account
-    
+    password = os.environ['PASSWORD']
+
     receiver = "renukawadikar27@gmail.com"
     context = ssl.create_default_context()
 
